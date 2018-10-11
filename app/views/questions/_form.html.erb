@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :category %>
+    <%= select("question", "category_id", Category.by_name.map {|c| [ c.name, c.id ] }, {include_blank: false}) %>
+  </div>
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
