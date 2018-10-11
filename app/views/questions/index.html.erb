@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>User</th>
       <th>Category</th>
     </tr>
   </thead>
@@ -15,7 +14,6 @@
     <% @questions.each do |question| %>
       <tr>
         <td><%= link_to question.title, question %></td>
-        <td><%= question.user_id %></td>
         <td><%= question.category.name %></td>
       </tr>
     <% end %>
