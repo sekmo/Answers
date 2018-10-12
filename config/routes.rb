@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :answers
   resources :categories
   root to: "questions#index"
 

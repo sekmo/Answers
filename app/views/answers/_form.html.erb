@@ -1,0 +1,14 @@
+<%= form_with(model: answer, local: true) do |form| %>
+  <%= error_messages_for answer %>
+
+  <div class="field">
+    <%= form.text_area :body, placeholder: "Your awesome answer" %>
+  </div>
+
+  <%= form.hidden_field :question_id, value: question.id  %>
+  <%= form.hidden_field :user_id, value: current_user.id  %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

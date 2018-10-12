@@ -4,7 +4,14 @@
 
 <h2><%= @question.title %></h2>
 
-<p>Published in <strong><%= @question.category.name %></strong> by <%= @question.user_id %></p>
+<p>
+  Published in <strong><%= @question.category.name %></strong> by <%= @question.user_id %>
+
+  <% if @question.user == current_user %>
+    <%= link_to 'Edit question', edit_question_path(@question) %> |
+    <%= link_to 'Delete question', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</p>
 
 <% if @question.body.present? %>
   <p>
@@ -13,7 +20,19 @@
   </p>
 <% end %>
 
-<% if @question.user == current_user %>
-  <%= link_to 'Edit question', edit_question_path(@question) %> |
-  <%= link_to 'Delete question', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+
+<h3>Submit a new answer:</h3>
+<%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>
+
+
+<% if @question.answers.any? %>
+  <% @question.answers.each do |answer| %>
+    <div class="answer">
+      <p class="answer-info">User <%= answer.user.id %> - <%= nice_local_time(answer.created_at) %></p>
+      <p class="answer-body">
+        <%= answer.body %>
+      </p>
+    </div>
+    <br>
+  <% end %>
+<% end  %>
