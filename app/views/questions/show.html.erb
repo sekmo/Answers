@@ -26,6 +26,7 @@
 
 
 <% if @question.answers.any? %>
+  <h2>Answers</h2>
   <% @question.answers.each do |answer| %>
     <div class="answer">
       <p class="answer-info">User <%= answer.user.id %> - <%= nice_local_time(answer.created_at) %></p>

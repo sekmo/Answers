@@ -10,6 +10,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="header">
+      <div class="header__inner wrapper">
+        <%= link_to 'MovieNight', root_path, class: "site-title" %>
+        <%= render "shared/menu" %>
+      </div>
+    </header>
+    <%= render "shared/flash_messages" %>
+    <main class="wrapper">
+      <%= yield %>
+    </main>
   </body>
 </html>
